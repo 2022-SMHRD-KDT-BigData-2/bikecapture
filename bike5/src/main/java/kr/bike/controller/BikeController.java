@@ -28,8 +28,15 @@ public class BikeController {
 		return "main";
 	}
 	
+	
+	@PostMapping("/join.do")
+	public String userJoin(User uvo, HttpServletRequest request) {
+		bikemapper.userJoin(uvo);
+		return "redirect:/main.do";
+	}
+	
 	@PostMapping("/login.do")
-	public String login(User uvo, HttpServletRequest request) {
+	public String userLogin(User uvo, HttpServletRequest request) {
 		User vo = bikemapper.userLogin(uvo);
 		if(vo!=null) {
 		HttpSession session = request.getSession();

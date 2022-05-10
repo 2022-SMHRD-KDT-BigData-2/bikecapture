@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.bike.mapper.BikeMapper">
-	<select id="userJoin" resultType="kr.bike.entity.User">
-	    select * from user_info
-	    order by num
-	</select>
+	<insert id="userJoin" parameterType="kr.bike.entity.User">
+	    insert into user_info values (#{id}, #{pw}, #{bb_num}, #{name}, #{rrn}, #{phone}, #{address})
+	</insert>
+	
 	<select id="userLogin" resultType="kr.bike.entity.User">
 	    select * from user_info
 	    where id=#{id} and pw=#{pw}
