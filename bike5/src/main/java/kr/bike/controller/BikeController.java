@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.bike.mapper.BikeMapper;
-import kr.bike.entity.user;
+import kr.bike.entity.User;
 import kr.bike.mapper.BikeMapper;
 
 @Controller
@@ -29,11 +29,11 @@ public class BikeController {
 	}
 	
 	@PostMapping("/login.do")
-	public String login(user uvo, HttpServletRequest request) {
-		user theVo = bikemapper.memberLogin(uvo);
-		if(theVo!=null) {
+	public String login(User uvo, HttpServletRequest request) {
+		User vo = bikemapper.userLogin(uvo);
+		if(vo!=null) {
 		HttpSession session = request.getSession();
-		session.setAttribute("mvo", theVo);
+		session.setAttribute("uvo", vo);
 		}
 		return "redirect:/main.do";
 	}

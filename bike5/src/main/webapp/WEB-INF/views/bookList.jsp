@@ -32,17 +32,7 @@
 	  bList+="<td>ISBN</td>";
 	  bList+="<td>보유도서수</td>";
 	  bList+="</tr>";
-	  
-	  $.each(data,(index,obj)=>{
-		  bList+="<tr>";
-		  bList+="<td>"+obj.num+"</td>";
-		  bList+="<td>"+obj.title+"</td>";
-		  bList+="<td>"+obj.author+"</td>";
-		  bList+="<td>"+obj.company+"</td>";
-		  bList+="<td>"+obj.isbn+"</td>";
-		  bList+="<td>"+obj.count+"</td>";
-		  bList+="</tr>";
-	  });
+	 
 	  bList+="</table>";
 	  
 	  $("#view").html(bList);
@@ -56,32 +46,6 @@
   <div class="panel panel-default">
     <div class="panel-heading">BOOK</div>
     <div class="panel-body">
-		<table class="table table-boardered table-hover">		  
-		  <tr>
-		  	<td>번호</td>
-	   		<td>제목</td>
-	    	<td>작가</td>
-	    	<td>출판사</td>
-	    	<td>ISBN</td>	  	
-	    	<td>보유도서수</td>	  	
-		  </tr>
-		  <c:forEach var="vo" items="${list}">	
-		  	
-		  <tr>
-		  	<td>${vo.num}</td>
-	   		<td>${vo.title}</td>
-	    	<td>${vo.author}</td>
-	    	<td>${vo.company}</td>
-	    	<td>${vo.isbn}</td>	  	
-	    	<td>${vo.count}</td>	  	
-		  </tr>
-		  </c:forEach>
-		  <tr>
-		    <td colspan="5">
-		      <button class="btn btn-success btn-sm" onclick="goJSON()">도서목록 가져오기</button>
-		    </td>
-		  </tr>
-		</table>
 		<div id="view">여기에 도서목록이 출력됩니다</div>
 	</div>
     <div class="panel-footer">빅데이터 분석서비스 개발자과정(정상범)</div>
