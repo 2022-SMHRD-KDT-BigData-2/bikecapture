@@ -1,5 +1,4 @@
 package kr.bike.entity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,8 +6,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-
+public class Original {
 	private String id;
 	private String pw;
 	private String bb_num;
@@ -16,7 +14,5 @@ public class User {
 	private String rrn;
 	private String phone;
 	private String address;
-	
-	
 	
 }
