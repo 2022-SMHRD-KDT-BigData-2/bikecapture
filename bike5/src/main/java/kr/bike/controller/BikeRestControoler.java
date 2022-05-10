@@ -20,7 +20,7 @@ public class BikeRestControoler {
 	}
 
 	@PostMapping("/login.do")
-	public String login(User uvo, HttpServletRequest request) {
+	public String userLogin(User uvo, HttpServletRequest request) {
 		User vo = bikeMapper.userLogin(uvo);
 		if(vo!=null) {
 			// 로그인에 성공한 경우
