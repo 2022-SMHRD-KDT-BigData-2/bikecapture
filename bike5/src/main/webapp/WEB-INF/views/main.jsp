@@ -16,6 +16,56 @@
 	charset="utf-8"></script>
 <script src="js/functions.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+function boardList() {
+	 $.ajax({
+   	url : "${cpath}/boardList",
+   	type : "get",
+   	dataType : "json",
+   	success : callBack,
+   	error : function(){alert("error");}
+   });
+}
+function callBack(data){
+	 var bList = "<table class='table table-bordered table-hover'>";
+	 bList+="<tr>";
+	 bList+="<td>번호</td>";
+	 bList+="<td>위반사항</td>";
+	 bList+="<td>작성일</td>";
+	 bList+="<td>작성자</td>";
+	 bList+="</tr>";
+	 // data에 저장된 JSON데이터를 핸들링 -> 반복문
+	 // [{"idx":1},{"title":"게시판",,,,},{   }]
+	 $.each(data,(index,obj)=>{
+
+		 bList+="<tr>";
+  	 bList+="<td>"+obj.bo_num+"</td>";
+  	 bList+="<td id='t"+obj.bo_num+"'><a href='javascript:cview("+obj.bo_num+")'>"+obj.vr_ill+"</a></td>";
+  	 bList+="<td>"+obj.bo_date+"</td>";
+  	 bList+="<td id='w"+obj.bo_num+"'>"+obj.name+"</td>";
+  	 bList+="</tr>";        	     	 
+		 
+	 });
+	 
+	 bList+="<tr>";
+	 bList+="<td colspan='4'>";
+
+	 bList+="<button class='btn btn-sm btn-info' onclick='accbtn()'>제보</button>";
+	 
+	 bList+="</td>";
+	 bList+="</tr>";
+	 bList+="</table>";
+	 
+	 $(".list").html(bList);
+	 $(".accuse").css("display", "block");
+	 $(".file").css("display", "none");
+	 $(".list").css("display", "block");
+	 $(".main").css("display", "none");
+	 $(".now").css("display", "none");
+}
+	function accbtn() {
+		$(".file").css("display", "block");
+		$(".list").css("display", "none");
+	}
 	function idCheck() {
 		// 1. id 가져오기
 		let id = $('#check').val()
@@ -53,15 +103,15 @@
 			data : {
 				'vr_title' : vr_title
 			},
-			success : vr_voide,
+			success : vr_video,
 			error : function() {
 				alert("error");
 			}
 		})
 	}
-	function vr_voide(data) { // { }
-		alert(data.vr_plate);
-		$("#aaa").html(data.vr_plate);
+	function vr_video(data) { // { }
+		   
+	      $("#aa").html("<table><tr><td>번호판</td></tr><tr><td>"+data.vr_plate+"</td></tr></table>");
 
 	}
 	function login() {
@@ -123,7 +173,7 @@
 		<div id="navigation">
 			<button type="button" onclick="main()">NOW</button>
 			<button type="button" onclick="myBox()">MY BOX</button>
-			<button type="button" onclick="accuse()">ACCUSE</button>
+			<button type="button" onclick="boardList()">ACCUSE</button>
 			<button type="button" onclick="manual()">MANUAL</button>
 		</div>
 	</div>
@@ -183,8 +233,7 @@
 					${uvo.name}님 방문을 환영합니다 <input type="submit" value="Logout">
 				</div>
 				<video class="now" width="640" height="344" controls
-					autoplay="autoplay">
-					<source src="/bike/original/20220429092515936.mp4" type="video/mp4">
+					autoplay="autoplay" src="original/20220429092515936.mp4" type="video/mp4">
 				</video>
 			</form>
 
@@ -194,11 +243,11 @@
 		<p></p>
 	</div>
 	<div class="accuse" style="display: none">
-		<p class="list"></p>
+		<div class="list"></div>
 		<button onclick="accuse()"></button>
-		<div class="file">
+		<div class="file" style="display: none">
 			<input type="file" name="vr_title" id="vr_title">
-			<button onclick="accuse()">CANCEL</button>
+			<button onclick="boardList()">CANCEL</button>
 			<button onclick="fileLoad()">SUBMIT</button>
 		</div>
 	</div>

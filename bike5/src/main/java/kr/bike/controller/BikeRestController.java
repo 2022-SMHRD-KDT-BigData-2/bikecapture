@@ -32,4 +32,12 @@ public class BikeRestController {
 		
 	}
 	
+	@GetMapping("/boardList")
+	public @ResponseBody List<Board> boardList() {
+		
+		List<Board> list = bikemapper.boardList();
+		
+		return list;		
+	}
+	
 }

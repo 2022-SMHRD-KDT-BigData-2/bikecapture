@@ -17,4 +17,8 @@
 		select * from video_analysis
 		where vr_title=#{vr_title}
 	</select>
+	<select id="boardList" resultType="kr.bike.entity.Board">
+	    select * from board
+	    order by bo_num desc
+	</select>
 </mapper>
