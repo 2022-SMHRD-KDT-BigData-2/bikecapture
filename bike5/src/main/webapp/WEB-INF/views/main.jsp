@@ -42,7 +42,7 @@
 			}
 		})
 	}
-<!--
+	<!--
 	function fileLoad() {
 		// 1. filename 가져오기
 		let vr_title = $('#vr_title').val()
@@ -61,47 +61,65 @@
 			}
 		})
 	}
--->
+	-->
+	function login() {
+		$(".loginform").css("display", "block");
+	}
+	function join() {
+		$(".joinform").css("display", "block");
+	}
+
 	function main() {
-		$("#main").css("display", "block");
-		$("#mybox").css("display", "none");
-		$("#accuse").css("display", "none");
-		$("#manual").css("display", "none");
+		$(".main").css("display", "block");
+		$(".mybox").css("display", "none");
+		$(".accuse").css("display", "none");
+		$(".manual").css("display", "none");
 	}
 
 	function myBox() {
 		var folder = "<p>2022-05-01<p>"
-		$("#mybox").html(folder);
-		$("#main").css("display", "none");
-		$("#mybox").css("display", "block");
-		$("#accuse").css("display", "none");
-		$("#manual").css("display", "none");
+		$(".mybox").html(folder);
+		$(".main").css("display", "none");
+		$(".mybox").css("display", "block");
+		$(".accuse").css("display", "none");
+		$(".manual").css("display", "none");
 	}
 
 	function accuse() {
 		var bList = "<table class='table table-bordered table-hover'>";
 		bList += "<tr>";
 		bList += "<td>번호</td>";
-		bList += "<td>제목</td>";
-		bList += "<td>작성자</td>";
+		bList += "<td>위반사항</td>";
 		bList += "<td>작성일</td>";
-		bList += "<td>조회수</td>";
-		bList += "<td>수정</td>";
+		bList += "<td>작성자</td>";
 		bList += "</tr>";
-		$("#accuse").html(bList);
-		$("#main").css("display", "none");
-		$("#mybox").css("display", "none");
-		$("#accuse").css("display", "block");
-		$("#manual").css("display", "none");
+		$(".accuse").html(bList);
+		$(".main").css("display", "none");
+		$(".mybox").css("display", "none");
+		$(".accuse").css("display", "block");
+		$(".manual").css("display", "none");
+	}
+
+	function fileLoad() {
+		var vr_title = document.getElementsByClassName("vr_title");
+
+		for (var i = 0; i < fileInput.length; i++) {
+			if (fileInput[i].files.length > 0) {
+				for (var j = 0; j < fileInput[i].files.length; j++) {
+					console.log(fileInput[i].files[j].name); // 파일명 출력
+				}
+			}
+		}
+		$(".accuse").html(vr_title);
 	}
 
 	function manual() {
 		var manual = "<div><p>헬멧 미착용</p><p>신호위반</p></div>"
-		$("#manual").html(manual);
-		$("#main").css("display", "none");
-		$("#mybox").css("display", "none");
-		$("#accuse").css("display", "none");
-		$("#manual").css("display", "block");
+		$(".manual").html(manual);
+		$(".main").css("display", "none");
+		$(".mybox").css("display", "none");
+		$(".accuse").css("display", "none");
+		$(".manual").css("display", "block");
 	}
 </script>
 </head>
@@ -124,60 +142,72 @@
 	<!-- 메인페이지 -->
 	<div id="main">
 		<c:if test="${empty uvo}">
-			<ul class="links">
-				<li><h5>로그인</h5></li>
-				<form class="main" action="${cpath}/login.do" method="post">
-					<div class="form-group">
-						<label for="id">아이디:</label> <input type="text"
-							class="form-control" name="id">
-					</div>
-					<div class="form-group">
-						<label for="pw">비밀번호:</label> <input type="password"
-							class="form-control" name="pw">
-					</div>
-					<button type="submit" class="btn btn-default">Login</button>
-				</form>
-			</ul>
+			<a href="#" onclick="login()">로그인을 해주세요</a>
 
-			<ul class="actions vertical">
-				<li><h5>회원가입</h5></li>
-				<form class="" action="${cpath}/join.do" method="post">
-					<li>아이디:<input type="text" class="form-control" name="id"></li>
-					<p id="result">
-						<button type="button" onclick="idCheck()">중복 확인</button>
-					</p>
-					<li>비밀번호:<input type="password" name="pw"></li>
-					<li>블랙박스번호:<input type="text" name="bb_num"></li>
-					<li>이름:<input type="text" name="name"></li>
-					<li>주민번호:<input type="text" name="rrn"></li>
-					<li>휴대폰번호:<input type="text" name="phone"></li>
-					<li>주소:<input type="text" name="address"></li>
+			<form class="loginform" action="${cpath}/login.do" method="post"
+				style="display: none">
+				<div class="form-group">
+					<label for="id">아이디:</label> <input type="text"
+						class="form-control" name="id">
+				</div>
+				<div class="form-group">
+					<label for="pw">비밀번호:</label> <input type="password"
+						class="form-control" name="pw">
+				</div>
+				<button type="submit" class="btn btn-default">Login</button>
+			</form>
 
-					<li><button type="submit" class="btn btn-default">회원가입</button></li>
-				</form>
-			</ul>
+			<a href="#" onclick="join()">회원가입</a>
+			<form class="joinform" action="${cpath}/join.do" method="post"
+				style="display: none">
+				<p>
+					아이디:<input type="text" class="form-control" name="id">
+					<button id="result" type="button" onclick="idCheck()">중복
+						확인</button>
+				</p>
+				<p>
+					비밀번호:<input type="password" name="pw">
+				</p>
+				<p>
+					블랙박스번호:<input type="text" name="bb_num">
+				</p>
+				<p>
+					이름:<input type="text" name="name">
+				</p>
+				<p>
+					주민번호:<input type="text" name="rrn">
+				</p>
+				<p>
+					휴대폰번호: <input type="text" name="phone">
+				</p>
+				<p>
+					주소: <input type="text" name="address">
+				</p>
+
+				<button type="submit">회원가입</button>
+			</form>
 		</c:if>
 
 		<c:if test="${!empty uvo}">
 			<form action="${cpath}/logout.do" method="post">
-				<div class="form-group">
-					<label>${uvo.name}님 방문을 환영합니다</label> <input type="submit"
-						class="btn btn-default" value="Logout">
+				<div class="now">
+					${uvo.name}님 방문을 환영합니다 <input type="submit" value="Logout">
 				</div>
-				<video width="640" height="344" controls autoplay="autoplay">
+				<video class="now" width="640" height="344" controls
+					autoplay="autoplay">
 					<source src="original/20220429092515936.mp4" type="video/mp4">
 				</video>
 			</form>
 
 		</c:if>
 	</div>
-	<div id="mybox">
-		<button></button>
+	<div class="mybox">
+		<p></p>
 	</div>
-	<div id="accuse">
-	<input type="file" name="vr_title" id="vr_title">
+	<div class="accuse">
+		<input class="accuse" type="file" name="vr_title" id="vr_title">
 	</div>
-	<div id="manual"></div>
+	<div class="manual"></div>
 
 	<div class="footer">
 		<div class="shell">빅데이터 순간포착</div>

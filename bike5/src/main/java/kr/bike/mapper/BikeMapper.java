@@ -2,6 +2,7 @@ package kr.bike.mapper;
 
 import java.util.List;
 
+import kr.bike.entity.Analysis;
 import kr.bike.entity.User;
 
 public interface BikeMapper {
@@ -10,5 +11,6 @@ public interface BikeMapper {
 
 	public int userJoin(User uvo);
 
-	//public User fileload(User uvo);
+	public Analysis fileLoad(Analysis avo);
+
 }

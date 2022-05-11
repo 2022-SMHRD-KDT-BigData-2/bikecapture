@@ -34,11 +34,11 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- 모든 파일 인코딩 설정 -->
+	<!-- 모든 파일 인코딩 설정
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 
 	<!-- 시작페이지 설정 -->
 	<welcome-file-list>

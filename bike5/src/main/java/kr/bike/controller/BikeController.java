@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.bike.mapper.BikeMapper;
+import kr.bike.entity.Analysis;
 import kr.bike.entity.User;
 import kr.bike.mapper.BikeMapper;
 
@@ -53,12 +54,8 @@ public class BikeController {
 	}
 	
 	@PostMapping("/fileload.do")
-	public String upload(User uvo, HttpServletRequest request) {
-		User vo = bikemapper.fileload(uvo);
-		if(vo!=null) {
-		HttpSession session = request.getSession();
-		session.setAttribute("uvo", vo);
-		}
-		return "redirect:/main.do";
+	public void fileLoad(Analysis avo, HttpServletRequest request) {
+		bikemapper.fileLoad(avo);
+		
 	}
 }

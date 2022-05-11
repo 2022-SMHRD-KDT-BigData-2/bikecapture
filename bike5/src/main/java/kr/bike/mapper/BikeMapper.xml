@@ -4,11 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.bike.mapper.BikeMapper">
 	<insert id="userJoin" parameterType="kr.bike.entity.User">
-	    insert into user_info values (#{id}, #{pw}, #{bb_num}, #{name}, #{rrn}, #{phone}, #{address})
+		insert into user_info values (#{id}, #{pw}, #{bb_num}, #{name}, #{rrn},
+		#{phone}, #{address})
 	</insert>
-	
+
 	<select id="userLogin" resultType="kr.bike.entity.User">
-	    select * from user_info
-	    where id=#{id} and pw=#{pw}
+		select * from user_info
+		where id=#{id} and pw=#{pw}
+	</select>
+
+	<select id="fileLoad" resultType="kr.bike.entity.Analysis">
+		select * from video_analysis
+		where vr_title=#{vr_title}
 	</select>
 </mapper>
