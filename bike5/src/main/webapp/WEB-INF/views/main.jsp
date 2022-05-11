@@ -42,7 +42,7 @@
 			}
 		})
 	}
-	<!--
+
 	function fileLoad() {
 		// 1. filename 가져오기
 		let vr_title = $('#vr_title').val()
@@ -54,6 +54,7 @@
 				'vr_title' : vr_title
 			},
 			success : function() {
+				console.log(vr_title);
 				alert("OKAY");
 			},
 			error : function() {
@@ -61,7 +62,7 @@
 			}
 		})
 	}
-	-->
+
 	function login() {
 		$(".loginform").css("display", "block");
 	}
@@ -98,19 +99,6 @@
 		$(".mybox").css("display", "none");
 		$(".accuse").css("display", "block");
 		$(".manual").css("display", "none");
-	}
-
-	function fileLoad() {
-		var vr_title = document.getElementsByClassName("vr_title");
-
-		for (var i = 0; i < fileInput.length; i++) {
-			if (fileInput[i].files.length > 0) {
-				for (var j = 0; j < fileInput[i].files.length; j++) {
-					console.log(fileInput[i].files[j].name); // 파일명 출력
-				}
-			}
-		}
-		$(".accuse").html(vr_title);
 	}
 
 	function manual() {
@@ -195,7 +183,7 @@
 				</div>
 				<video class="now" width="640" height="344" controls
 					autoplay="autoplay">
-					<source src="original/20220429092515936.mp4" type="video/mp4">
+					<source src="/bike/original/20220429092515936.mp4" type="video/mp4">
 				</video>
 			</form>
 
@@ -205,7 +193,13 @@
 		<p></p>
 	</div>
 	<div class="accuse">
+
 		<input class="accuse" type="file" name="vr_title" id="vr_title">
+		<button onclick="accuse()">CANCEL</button>
+		<button onclick="fileLoad()">SUBMIT</button>
+		
+		
+
 	</div>
 	<div class="manual"></div>
 

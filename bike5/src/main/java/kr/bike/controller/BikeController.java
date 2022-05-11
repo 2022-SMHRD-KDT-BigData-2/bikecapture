@@ -53,9 +53,5 @@ public class BikeController {
 		return "redirect:/main.do";
 	}
 	
-	@PostMapping("/fileload.do")
-	public void fileLoad(Analysis avo, HttpServletRequest request) {
-		bikemapper.fileLoad(avo);
-		
-	}
+
 }
