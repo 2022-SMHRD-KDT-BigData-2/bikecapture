@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.bike.entity.Analysis;
@@ -23,8 +24,10 @@ public class BikeRestController {
 	private BikeMapper bikemapper;
 
 	@PostMapping("/fileload")
-	public Analysis fileLoad(Analysis vo, HttpServletRequest request) {
-		Analysis avo = bikemapper.fileLoad(vo);
+	public @ResponseBody Analysis fileLoad(String vr_title, HttpServletRequest request) {
+		vr_title=vr_title.substring(vr_title.lastIndexOf("\\")+1);
+		Analysis avo = bikemapper.fileLoad(vr_title);
+		System.out.println(vr_title);
 		return avo;
 		
 	}

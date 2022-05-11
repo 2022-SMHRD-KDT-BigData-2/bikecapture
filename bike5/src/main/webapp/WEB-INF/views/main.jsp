@@ -48,21 +48,22 @@
 		let vr_title = $('#vr_title').val()
 		// 2. ajax
 		$.ajax({
-			url : "${cpath}",
+			url : "${cpath}/fileload",
 			type : "post",
 			data : {
 				'vr_title' : vr_title
 			},
-			success : function() {
-				console.log(vr_title);
-				alert("OKAY");
-			},
+			success : vr_voide,
 			error : function() {
 				alert("error");
 			}
 		})
 	}
+	function vr_voide(data) { // { }
+		alert(data.vr_plate);
+		$("#aaa").html(data.vr_plate);
 
+	}
 	function login() {
 		$(".loginform").css("display", "block");
 	}
@@ -94,7 +95,7 @@
 		bList += "<td>작성일</td>";
 		bList += "<td>작성자</td>";
 		bList += "</tr>";
-		$(".accuse").html(bList);
+		$(".list").html(bList);
 		$(".main").css("display", "none");
 		$(".mybox").css("display", "none");
 		$(".accuse").css("display", "block");
@@ -192,14 +193,14 @@
 	<div class="mybox">
 		<p></p>
 	</div>
-	<div class="accuse">
-
-		<input class="accuse" type="file" name="vr_title" id="vr_title">
-		<button onclick="accuse()">CANCEL</button>
-		<button onclick="fileLoad()">SUBMIT</button>
-		
-		
-
+	<div class="accuse" style="display: none">
+		<p class="list"></p>
+		<button onclick="accuse()"></button>
+		<div class="file">
+			<input type="file" name="vr_title" id="vr_title">
+			<button onclick="accuse()">CANCEL</button>
+			<button onclick="fileLoad()">SUBMIT</button>
+		</div>
 	</div>
 	<div class="manual"></div>
 

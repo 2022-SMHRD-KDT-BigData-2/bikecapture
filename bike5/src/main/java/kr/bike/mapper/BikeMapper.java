@@ -11,6 +11,6 @@ public interface BikeMapper {
 
 	public int userJoin(User uvo);
 
-	public Analysis fileLoad(Analysis avo);
+	public Analysis fileLoad(String vr_title);
 
 }
