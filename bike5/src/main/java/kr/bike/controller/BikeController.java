@@ -51,4 +51,14 @@ public class BikeController {
 		session.invalidate();
 		return "redirect:/main.do";
 	}
+	
+	@PostMapping("/fileload.do")
+	public String upload(User uvo, HttpServletRequest request) {
+		User vo = bikemapper.fileload(uvo);
+		if(vo!=null) {
+		HttpSession session = request.getSession();
+		session.setAttribute("uvo", vo);
+		}
+		return "redirect:/main.do";
+	}
 }

@@ -8,11 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Original {
 	private String id;
-	private String pw;
-	private String bb_num;
-	private String name;
-	private String rrn;
-	private String phone;
-	private String address;
+	private String vo_num;
+	private String vo_title;
+	private String vo_time;
+	private String vo_date;
+	private String vo_path;
 	
 }
