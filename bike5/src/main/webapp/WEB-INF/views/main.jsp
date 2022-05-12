@@ -16,6 +16,7 @@
 	charset="utf-8"></script>
 <script src="js/functions.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+
 function boardList() {
 	 $.ajax({
    	url : "${cpath}/boardList",
@@ -93,7 +94,41 @@ function callBack(data){
 			}
 		})
 	}
+function cloud() {
 
+		 $.ajax({
+	   	url : "${cpath}/cloud",
+	   	type : "get",
+	   	dataType : "json",
+	   	success : cloudBox,
+	   	error : function(){alert("error");}
+	   });
+	}
+		 
+function cloudBox(data) { // { }
+	 var cList = "<table class='table table-bordered table-hover'>";
+	 cList+="<tr>";
+	 cList+="<td>파일명</td>";
+	 cList+="</tr>";
+	 // data에 저장된 JSON데이터를 핸들링 -> 반복문
+	 // [{"idx":1},{"title":"게시판",,,,},{   }]
+	 $.each(data,(index,obj)=>{
+		 cList+="<tr>";
+  	 cList+="<td><a href='#'>"+obj.vo_title+"</td></a>";
+  	 cList+="</tr>";        	     	 	 
+	 });
+	 cList+="</table>";
+	 $(".mybox").html(cList);
+	$(".mybox").css("display", "block");
+	 $(".accuse").css("display", "none");
+	 $(".file").css("display", "none");
+	 $(".list").css("display", "none");
+	 $(".main").css("display", "none");
+	 $(".now").css("display", "none");
+	 $(".manual").css("display", "none");
+
+}
+ 
 	function fileLoad() {
 		// 1. filename 가져오기
 		let vr_title = $('#vr_title').val()
@@ -110,13 +145,22 @@ function callBack(data){
 			}
 		})
 	}
+	
 	function vr_video(data) { // { }
 		   
 	      $("#aa").html("<table><tr><td>번호판</td></tr><tr><td>"+data.vr_plate+"</td></tr></table>");
 
 	}
 	function login() {
-		$(".loginform").css("display", "block");
+	        $("#popLogin").show();
+	        $(".loginform").css("display", "block"); 
+	        $("body").append('<div class="backcon"></div>'); 
+		
+	}
+	
+	function popClose(){
+        $("#popLogin").hide();
+  	    $(".backcon").remove();
 	}
 	function join() {
 		$(".joinform").css("display", "block");
@@ -130,14 +174,6 @@ function callBack(data){
 		$(".manual").css("display", "none");
 	}
 
-	function myBox() {
-		$(".list").css("display", "none");
-		$(".now").css("display", "none");
-		$(".main").css("display", "none");
-		$(".mybox").css("display", "block");
-		$(".accuse").css("display", "none");
-		$(".manual").css("display", "none");
-	}
 
 	function accuse() {
 		var bList = "<table class='table table-bordered table-hover'>";
@@ -151,6 +187,7 @@ function callBack(data){
 		$(".now").css("display", "none");
 		$(".main").css("display", "none");
 		$(".mybox").css("display", "none");
+		$(".cloud").css("display", "none");		
 		$(".accuse").css("display", "block");
 		$(".manual").css("display", "none");
 	}
@@ -175,7 +212,7 @@ function callBack(data){
 		<a href="#"><span>Black box site</span></a>
 		<div id="navigation">
 			<button type="button" onclick="main()">NOW</button>
-			<button type="button" onclick="myBox()">MY BOX</button>
+			<button type="button" onclick="cloud()">MY BOX</button>
 			<button type="button" onclick="boardList()">ACCUSE</button>
 			<button type="button" onclick="manual()">MANUAL</button>
 		</div>
@@ -183,69 +220,75 @@ function callBack(data){
 
 	<!-- 메인페이지 -->
 	<div id="main">
+
+
 		<c:if test="${empty uvo}">
-			<a href="#" onclick="login()">로그인을 해주세요</a>
+			<img onclick="login()" src="original/no_login.png" width="900"
+				height="600">
+			<div id="popLogin">
+				<div class="close" onclick="popClose()">X</div>
+				<div class="loginform">
+					<form action="${cpath}/login.do" method="post">
+						<p>
+							아이디: <input type="text" name="id">
+						</p>
+						<p>
+							비밀번호:<input type="password" name="pw">
+						</p>
 
-			<form class="loginform" action="${cpath}/login.do" method="post"
-				style="display: none">
-				<div class="form-group">
-					<label for="id">아이디:</label> <input type="text"
-						class="form-control" name="id">
+						<button type="submit">Login</button>
+					</form>
 				</div>
-				<div class="form-group">
-					<label for="pw">비밀번호:</label> <input type="password"
-						class="form-control" name="pw">
-				</div>
-				<button type="submit" class="btn btn-default">Login</button>
-			</form>
+				<a href="#" onclick="join()">회원가입</a>
 
-			<a href="#" onclick="join()">회원가입</a>
-			<img src="original/no_login.png" width="900" height="600" onclick="login()">
-			<form class="joinform" action="${cpath}/join.do" method="post"
-				style="display: none">
-				<p>
-					아이디:<input type="text" class="form-control" name="id">
-					<button id="result" type="button" onclick="idCheck()">중복
-						확인</button>
-				</p>
-				<p>
-					비밀번호:<input type="password" name="pw">
-				</p>
-				<p>
-					블랙박스번호:<input type="text" name="bb_num">
-				</p>
-				<p>
-					이름:<input type="text" name="name">
-				</p>
-				<p>
-					주민번호:<input type="text" name="rrn">
-				</p>
-				<p>
-					휴대폰번호: <input type="text" name="phone">
-				</p>
-				<p>
-					주소: <input type="text" name="address">
-				</p>
 
-				<button type="submit">회원가입</button>
-			</form>
-		</c:if>
+				<form class="joinform" action="${cpath}/join.do" method="post"
+					style="display: none">
+					<p>
+						아이디:<input type="text" class="form-control" name="id">
+						<button id="result" type="button" onclick="idCheck()">중복
+							확인</button>
+					</p>
+					<p>
+						비밀번호:<input type="password" name="pw">
+					</p>
+					<p>
+						블랙박스번호:<input type="text" name="bb_num">
+					</p>
+					<p>
+						이름:<input type="text" name="name">
+					</p>
+					<p>
+						주민번호:<input type="text" name="rrn">
+					</p>
+					<p>
+						휴대폰번호: <input type="text" name="phone">
+					</p>
+					<p>
+						주소: <input type="text" name="address">
+					</p>
 
-		<c:if test="${!empty uvo}">
-			<form action="${cpath}/logout.do" method="post">
-				<div class="now">
-					${uvo.name}님 방문을 환영합니다 <input type="submit" value="Logout">
-				</div>
-				<video class="now" width="900" height="600" 
-					autoplay="autoplay" src="original/20220429092515936.mp4"
-					type="video/mp4">
-				</video>
-			</form>
-
+					<button type="submit">회원가입</button>
+				</form>
+			</div>
 		</c:if>
 	</div>
+
+
+	<c:if test="${!empty uvo}">
+		<form action="${cpath}/logout.do" method="post">
+			<div class="now">
+				${uvo.name}님 방문을 환영합니다 <input type="submit" value="Logout">
+			</div>
+			<video class="now" width="900" height="600" autoplay="autoplay"
+				src="original/20220429092515936.mp4" type="video/mp4">
+			</video>
+		</form>
+
+	</c:if>
+
 	<div class="mybox">
-		<p></p>
+		<div class="cloud" onclick="cloud()"></div>
 	</div>
 	<div class="accuse" style="display: none">
 		<div class="list"></div>

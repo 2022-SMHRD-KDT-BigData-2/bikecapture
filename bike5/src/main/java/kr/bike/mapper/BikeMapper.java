@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.bike.entity.Analysis;
 import kr.bike.entity.Board;
+import kr.bike.entity.Original;
 import kr.bike.entity.User;
 
 public interface BikeMapper {
@@ -15,4 +16,6 @@ public interface BikeMapper {
 	public Analysis fileLoad(String vr_title);
 
 	public List<Board> boardList();
+
+	public List<Original> cloudList();
 }

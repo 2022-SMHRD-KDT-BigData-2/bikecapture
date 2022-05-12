@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.bike.entity.Analysis;
 import kr.bike.entity.Board;
+import kr.bike.entity.Original;
 import kr.bike.mapper.BikeMapper;
 
 @RestController
@@ -38,6 +39,13 @@ public class BikeRestController {
 		List<Board> list = bikemapper.boardList();
 		
 		return list;		
+	}
+	
+	@GetMapping("/cloud")
+	public @ResponseBody List<Original> cloudList(){
+		List<Original> clist = bikemapper.cloudList();
+		return clist;
+		
 	}
 	
 }
