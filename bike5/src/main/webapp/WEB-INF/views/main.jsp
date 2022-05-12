@@ -66,6 +66,7 @@ function callBack(data){
 }
 	function accbtn() {
 		$(".file").css("display", "block");
+		$(".content").css("display", "block");
 		$(".list").css("display", "none");
 	}
 	function idCheck() {
@@ -146,10 +147,14 @@ function cloudBox(data) { // { }
 		})
 	}
 	
-	function vr_video(data) { // { }
-		   
-	      $("#aa").html("<table><tr><td>번호판</td></tr><tr><td>"+data.vr_plate+"</td></tr></table>");
-
+	function vr_video(data) {
+		
+		$("#ill").html(data.vr_ill)
+		$("#time").html(data.vr_illtime)
+		$("#place").html(data.vr_long+" "+data.vr_lati)
+		$("#plate").html(data.vr_plate)
+		$(".content").css("display","block")
+		
 	}
 	function login() {
 	        $("#popLogin").show();
@@ -292,11 +297,46 @@ function cloudBox(data) { // { }
 	</div>
 	<div class="accuse" style="display: none">
 		<div class="list"></div>
-		<button onclick="accuse()"></button>
 		<div class="file" style="display: none">
 			<input type="file" name="vr_title" id="vr_title">
 			<button onclick="boardList()">CANCEL</button>
 			<button onclick="fileLoad()">SUBMIT</button>
+		</div>
+		<div class="content" style="display: none">
+			<table class='table table-bordered table-hover'>
+				<tr>
+					<td>위반사항</td>
+					<td id="ill"></td>
+				</tr>
+				<tr>
+					<td>위반시간</td>
+					<td id="time"></td>
+				</tr>
+				<tr>
+					<td>위반장소</td>
+					<td id="place"></td>
+				</tr>
+				<tr>
+					<td>위반번호</td>
+					<td id="plate"></td>
+				</tr>
+				<tr>
+					<td>제보자</td>
+					<td>${uvo.name}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>${uvo.rrn}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>${uvo.address}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>${uvo.phone}</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="manual" style="display: none">
