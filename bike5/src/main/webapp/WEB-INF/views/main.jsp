@@ -200,6 +200,7 @@ function callBack(data){
 			</form>
 
 			<a href="#" onclick="join()">회원가입</a>
+			<img src="original/no_login.png" width="900" height="600" onclick="login()">
 			<form class="joinform" action="${cpath}/join.do" method="post"
 				style="display: none">
 				<p>
@@ -235,7 +236,7 @@ function callBack(data){
 				<div class="now">
 					${uvo.name}님 방문을 환영합니다 <input type="submit" value="Logout">
 				</div>
-				<video class="now" width="900" height="600" controls
+				<video class="now" width="900" height="600" 
 					autoplay="autoplay" src="original/20220429092515936.mp4"
 					type="video/mp4">
 				</video>
