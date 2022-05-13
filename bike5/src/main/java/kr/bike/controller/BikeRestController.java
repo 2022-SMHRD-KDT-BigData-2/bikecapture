@@ -54,5 +54,10 @@ public class BikeRestController {
 		User uid = bikemapper.idCheck(id);
 		return uid;
 	}
+	
+	@PostMapping("/insert")
+	public void boardAjaxInsert(Board vo) {
+		bikemapper.boardInsert(vo);
+	}
 
 }

@@ -35,4 +35,9 @@
 		select * from user_info
 		where id=#{id}
 	</select>
+	
+	<insert id="boardInsert" parameterType="kr.bike.entity.Board">
+		insert into board(bo_num, vr_ill, bo_date, name)
+	    values(bo_num_seq.nextval, #{vr_ill}, sysdate, #{name})
+	</insert>
 </mapper>

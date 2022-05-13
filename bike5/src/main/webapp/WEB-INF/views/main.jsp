@@ -47,12 +47,16 @@ function callBack(data){
 	 // data에 저장된 JSON데이터를 핸들링 -> 반복문
 	 // [{"idx":1},{"title":"게시판",,,,},{   }]
 	 $.each(data,(index,obj)=>{
-
-		 bList+="<tr>";
+		
+	 let name = obj.name.split("");
+	 let lastname = name[0];
+	 let hidename = name[0]+"**";	 
+		 
+	 bList+="<tr>";
   	 bList+="<td>"+obj.bo_num+"</td>";
   	 bList+="<td id='t"+obj.bo_num+"'><a href='javascript:cview("+obj.bo_num+")'>"+obj.vr_ill+"</a></td>";
   	 bList+="<td>"+obj.bo_date+"</td>";
-  	 bList+="<td id='w"+obj.bo_num+"'>"+obj.name+"</td>";
+  	 bList+="<td id='w"+obj.bo_num+"'>"+hidename+"</td>";
   	 bList+="</tr>";        	     	 
 		 
 	 });
@@ -127,12 +131,13 @@ function cloudBox(data) { // { }
 	 // [{"idx":1},{"title":"게시판",,,,},{   }]
 	 $.each(data,(index,obj)=>{
 		 cList+="<tr>";
-  	 cList+="<td><a href='#'>"+obj.vo_title+"</td></a>";
-  	 cList+="</tr>";        	     	 	 
-	 });
-	 cList+="</table>";
-	 $("#mybox").html(cList);
-	$("#mybox").css("display", "block");
+		 cList+="<td><a onclick='video_play("+obj.vo_title+")'>"+obj.vo_title+"</td></a>";
+	  	 cList+="</tr>";
+		 });
+		 cList+="</table>";
+		 
+	 $("#cloud").html(cList);
+	 $("#cloud").css("display", "block");
 	 $("#accuse").css("display", "none");
 	 $("#file").css("display", "none");
 	 $("#list").css("display", "none");
@@ -140,7 +145,14 @@ function cloudBox(data) { // { }
 	 $("#now").css("display", "none");
 	 $("#manual").css("display", "none");
 
-}
+	}
+	
+	function video_play(vo_title) {		
+		$("#video").css("display","block")
+		$("#video").html('<source src="original/'+vo_title+'.mp4" type="video/mp4"></source>' );
+		var video = document.getElementById('video');
+		video.load();
+	}
  
 	function fileLoad() {
 		// 1. filename 가져오기
@@ -168,6 +180,14 @@ function cloudBox(data) { // { }
 		$("#content").css("display","block")
 		
 	}
+	function fileclear() {
+		$("#vr_title").val("");
+		$("#ill").html("");
+		$("#time").html("");
+		$("#place").html("");
+		$("#plate").html("");
+	}
+	
 	function login() {
 			$(".joinForm").css("display", "none");
 	        $(".login").css("display", "block"); 
@@ -208,14 +228,24 @@ function cloudBox(data) { // { }
 	}
 
 	function accuse() {
-		var bList = "<table class='table table-bordered table-hover'>";
-		bList += "<tr>";
-		bList += "<td>번호</td>";
-		bList += "<td>위반사항</td>";
-		bList += "<td>작성일</td>";
-		bList += "<td>작성자</td>";
-		bList += "</tr>";
-		$("#list").html(bList);
+		let vr_ill = $("#ill").text();
+		let ill_time = $("#time").text();
+		let name = $("#name").text();
+		
+		$.ajax({
+			url : "${cpath}/insert",
+			type : "post",
+			data : {
+				"vr_ill" : vr_ill,
+				"ill_time" : ill_time,
+				"name" : name
+			},
+			success : boardList,
+			error : function() { alert("error");}
+		});
+		
+		$("#video").css("display", "none");
+		$("#list").css("display", "block");
 		$("#now").css("display", "none");
 		$("#main").css("display", "none");
 		$("#mybox").css("display", "none");
@@ -251,6 +281,7 @@ function cloudBox(data) { // { }
 
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
+					<c:if test="${empty uvo}">
 					<li class="nav-item"><a class="nav-link" href="#"
 						onclick="popUp()"> <img src="css/images//d.png" width="20"
 							height="20">NOW
@@ -261,13 +292,12 @@ function cloudBox(data) { // { }
 						onclick="popUp()">ACCUSE</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"
 						onclick="popUp()">MANUAL</a></li>
-					<c:if test="${empty uvo}">
 						<li class="nav-item"><a class="nav-link" href="#" id="login"
 							onclick="login()">LOG-IN</a></li>
 					</c:if>
 					<c:if test="${!empty uvo}">
-						<li class="nav-item"><a class="nav-link" href="#"
-							onclick="main()"> <img src="css/images//d.png" width="20"
+						<li class="nav-item"><a class="nav-link" href="main.do">
+						<img src="css/images/d.png" width="20"
 								height="20">NOW
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#"
@@ -395,7 +425,12 @@ function cloudBox(data) { // { }
 			</c:if>
 		</div>
 		<div id="mybox">
-			<div id="cloud" onclick="cloud()"></div>
+			<div id="cloud" onclick="cloud()">
+		</div>
+		<c:if test="${!empty uvo}">
+		<video id="video" width="900" height="600" controls="controls">
+		</video>
+		</c:if>
 		</div>
 
 
@@ -403,10 +438,11 @@ function cloudBox(data) { // { }
 			<div id="list"></div>
 			<div id="file" style="display: none">
 				<input type="file" name="vr_title" id="vr_title">
-				<button onclick="boardList()">CANCEL</button>
+				<button onclick="fileclear()">CANCEL</button>
 				<button onclick="fileLoad()">SUBMIT</button>
 			</div>
 			<div id="content" style="display: none">
+				<form id="insert">
 				<table class='table table-bordered table-hover'>
 					<tr>
 						<td>위반사항</td>
@@ -426,7 +462,7 @@ function cloudBox(data) { // { }
 					</tr>
 					<tr>
 						<td>제보자</td>
-						<td>${uvo.name}</td>
+						<td id="name">${uvo.name}</td>
 					</tr>
 					<tr>
 						<td></td>
@@ -441,6 +477,9 @@ function cloudBox(data) { // { }
 						<td>${uvo.phone}</td>
 					</tr>
 				</table>
+				</form>
+				<button onclick="accuse()">등록</button>
+				<button onclick="boardList()">취소</button>
 			</div>
 		</div>
 
