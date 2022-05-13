@@ -385,40 +385,49 @@ function cloudBox(data) { // { }
 						<form class="joinForm" action="${cpath}/join.do" method="post"
 							style="display: none">
 							<div class="close" onclick="popClose()">X</div>
-							<h1>Sign-up</h1>
-							<p>
-								아이디:<input type="text" name="id" id="id">
+							<div class="sign-up">
+								<h2>Sign-up</h2>
 
-								<button type="button" onclick="idCheck()">중복 확인</button>
-								<span id="result"></span>
-							</p>
-							<p>
-								비밀번호:<input type="password" name="pw" id="pw">
-							</p>
-							<p>
-								블랙박스번호:<input type="text" name="bb_num">
-							</p>
-							<p>
-								이름:<input type="text" name="name">
-							</p>
-							<p>
-								주민번호:<input type="text" name="rrn">
-							</p>
-							<p>
-								휴대폰번호: <input type="text" name="phone">
-							</p>
-							<p>
-								주소: <input type="text" name="address">
-							</p>
-							<input class="" type="submit" value="가입완료">
+								<h4 class="col-md-3">아이디 :</h4>
+								<input class="col-md-8" type="text" name="id" id="id">
+								<button type="button" style="margin: 2%" onclick="idCheck()">중복
+									확인</button>
+								<span class="col-md-11" id="result"></span>
+
+
+								<h4 class="col-md-3">비밀번호 :</h4>
+								<input class="col-md-8" type="password" name="pw" id="pw">
+
+
+								<h4 class="col-md-3">블랙박스번호 :</h4>
+								<input class="col-md-8" type="text" name="bb_num">
+
+
+								<h4 class="col-md-3">이름 :</h4>
+								<input class="col-md-8" type="text" name="name">
+
+
+								<h4 class="col-md-3">주민번호 :</h4>
+								<input class="col-md-8" type="text" name="rrn">
+
+
+								<h4 class="col-md-3">휴대폰번호 :</h4>
+								<input class="col-md-8" type="text" name="phone">
+
+								<h4 class="col-md-3">주소 :</h4>
+								<input class="col-md-8" type="text" name="address">
+							</div>
+							
+								<input class="join-f-btn" style="margin: 5%" type="submit" value="가입 완료">
+						
 						</form>
 					</div>
 
 
-				</div>
-			</c:if>
-
-
+					</div>
+				</c:if>
+	
+			</div>
 
 		</div>
 		<!-- 로그인완료! -->

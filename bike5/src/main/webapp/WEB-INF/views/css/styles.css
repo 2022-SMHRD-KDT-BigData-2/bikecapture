@@ -265,6 +265,49 @@ h2 {
     letter-spacing: 2px;
 }
 
+<!-- 회원가입 -->
+.sign-up span {
+  margin-top: -1%;
+  margin-bottom: -2%
+}
+
+.sign-up input {
+  width: 32.5%;
+  height: 40px;
+  border-radius: 30px;
+  margin-top: 12.5px;
+  padding: 0px 20px;
+  border: 1px solid lightgray;
+  outline: none;
+}
+
+.sign-up button {
+    width: 15%;
+    height: 35px;
+    border-radius: 30px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.sign-up h4 {
+	margin-top: 3.5%;
+	margin-left: 10%;
+}
+
+.join-f-btn {
+	width: 40%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+
 <!--여기까지  -->
 
 
