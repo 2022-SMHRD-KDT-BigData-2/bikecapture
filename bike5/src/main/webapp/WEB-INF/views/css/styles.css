@@ -77,9 +77,9 @@
     left: 30%;
     bottom: 49%;
     right: 50%;
-    background-color: #1f2224;
     z-index: 2;
     border-radius: 20px;
+    text-align: center;
     }
 .backcon{
     content: "";
@@ -92,10 +92,16 @@
     z-index: 1;
 }
 .close{
-  position:absolute;
-  top:-25px;
-  right: 0;
-  cursor:pointer;
+    float: right;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    /* right: 5px; */
+    margin-right: 2%;
 }
 
 <!-- 여기까지 꼭 넣어주기!! --> 
@@ -130,17 +136,32 @@ li {
   list-style: none;
 }
 
+#video{
+	display:none;
+}
 
+.joinForm{
+    width: 70%;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    margin-top: 10%;
+}
 
 .login {
-  width: 100%;
-  height: 515px;
-  background: white;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    width: 70%;
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    margin-top: 10%;
 }
 
 h2 {
@@ -148,8 +169,11 @@ h2 {
   font-size: 2em;
 }
 .login_sns {
-  padding: 20px;
-  display: flex;
+	text-align: center;
+    padding: 20px;
+    display: flex;
+    margin: auto;
+    justify-content: center;
 }
 
 .login_sns li {
@@ -172,6 +196,8 @@ h2 {
 .login_id {
   margin-top: 0px;
   width: 50%;
+  margin: auto;
+  padding-top: 2%
 }
 
 .login_id input {
@@ -187,6 +213,8 @@ h2 {
 .login_pw {
   margin-top: 20px;
   width: 50%;
+  margin: auto;
+  padding-top: 2%
 }
 
 .login_pw input {
@@ -210,20 +238,35 @@ h2 {
 }
 
 .submit {
-  margin-top: 50px;
-  width: 80%;
+    width: 80%;
+    margin: auto;
+    display: flex;
 }
 .submit input {
-  width: 100%;
-  height: 50px;
-  border: 0;
-  outline: none;
-  border-radius: 40px;
-  background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
-  color: white;
-  font-size: 1.2em;
-  letter-spacing: 2px;
+    width: 40%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 2.5em;
+    letter-spacing: 2px;
 }
+.submit button {
+    width: 40%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(255, 77, 46), rgb(255, 155, 47));
+    color: white;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+<!--여기까지  -->
+
 
 *,
 *::before,
@@ -275,7 +318,11 @@ h1, .h1 {
 }
 @media (min-width: 1200px) {
   h1, .h1 {
-    font-size: 2.5rem;
+
+    font-size: 5rem;
+    margin-top: -15%;
+    padding: 20px;
+    justify-content: center;
   }
 }
 
@@ -283,9 +330,11 @@ h2, .h2 {
   font-size: calc(1.325rem + 0.9vw);
 }
 @media (min-width: 1200px) {
-  h2, .h2 {
+  h2, .h2 {  
     font-size: 5rem;
     margin-top: -15%;
+    padding: 20px;
+    justify-content: center;
   }
 }
 
@@ -548,6 +597,7 @@ button:not(:disabled),
 [type=reset]:not(:disabled),
 [type=submit]:not(:disabled) {
   cursor: pointer;
+  margin: 7%;
 }
 
 ::-moz-focus-inner {
@@ -5208,15 +5258,15 @@ textarea.form-control-lg {
 }
 
 .bs-component {
-display: flex;
-flex-direction: column-reverse;
-flex-wrap: wrap;
-float: left;
-align-items: stretch;
-align-content: flex-end;
-justify-content: space-evenly;
-margin-top: 15%;
-margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    float: left;
+    align-items: stretch;
+    align-content: flex-end;
+    justify-content: space-evenly;
+    margin-top: 15%;
+    margin-left: 6%;
 }
 
 @media (prefers-reduced-motion: reduce) {

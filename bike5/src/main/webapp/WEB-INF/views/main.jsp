@@ -69,9 +69,8 @@ function callBack(data){
 	 bList+="</td>";
 	 bList+="</tr>";
 	 bList+="</table>";
-	 
-	 $("#list").html(bList);
 	 $("#video").css("display", "none");
+	 $("#list").html(bList);
 	 $("#accuse").css("display", "block");
 	 $("#file").css("display", "none");
 	 $("#list").css("display", "block");
@@ -80,6 +79,7 @@ function callBack(data){
 	 $("#manual").css("display", "none");
 }
 	function accbtn() {
+		$("#video").css("display", "none");
 		$("#accuse").css("display", "block");
 		$("#file").css("display", "block");
 		$("#content").css("display", "block");
@@ -136,7 +136,6 @@ function cloudBox(data) { // { }
 	  	 cList+="</tr>";
 		 });
 		 cList+="</table>";
-		 
 	 $("#cloud").html(cList);
 	 $("#cloud").css("display", "block");
 	 $("#accuse").css("display", "none");
@@ -145,6 +144,7 @@ function cloudBox(data) { // { }
 	 $("#main").css("display", "none");
 	 $("#now").css("display", "none");
 	 $("#manual").css("display", "none");
+	 $("#video").css("display", "block");
 
 	}
 	
@@ -190,6 +190,7 @@ function cloudBox(data) { // { }
 	}
 	
 	function login() {
+		$("#video").css("display", "none");
 			$(".joinForm").css("display", "none");
 	        $(".login").css("display", "block"); 
 	        $(".loginForm").css("display", "block"); 
@@ -225,6 +226,7 @@ function cloudBox(data) { // { }
 		$("#accuse").css("display", "none");
 		$("#manual").css("display", "none");
 		$("#login").css("display", "block");
+		$("#video").css("display", "none");
 			
 	}
 
@@ -256,6 +258,7 @@ function cloudBox(data) { // { }
 	}
 
 	function manual() {
+		$("#video").css("display", "none");
 		$("#list").css("display", "none");
 		$("#now").css("display", "none");
 		$("#main").css("display", "none");
@@ -271,7 +274,7 @@ function cloudBox(data) { // { }
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
 		id="mainNav">
 		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#page-top">BLACK BOX</a>
+			<a class="navbar-brand" href="main.do">BLACK BOX</a>
 			<button class="navbar-toggler navbar-toggler-right" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 				aria-controls="navbarResponsive" aria-expanded="false"
@@ -283,23 +286,22 @@ function cloudBox(data) { // { }
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<c:if test="${empty uvo}">
-					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="popUp()"> <img src="css/images//d.png" width="20"
-							height="20">NOW
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="popUp()">MY BOX</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="popUp()">ACCUSE</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="popUp()">MANUAL</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="popUp()"> <img src="css/images//d.png" width="20"
+								height="20">NOW
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="popUp()">MY BOX</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="popUp()">ACCUSE</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="popUp()">MANUAL</a></li>
 						<li class="nav-item"><a class="nav-link" href="#" id="login"
 							onclick="login()">LOG-IN</a></li>
 					</c:if>
 					<c:if test="${!empty uvo}">
 						<li class="nav-item"><a class="nav-link" href="main.do">
-						<img src="css/images/d.png" width="20"
-								height="20">NOW
+								<img src="css/images/d.png" width="20" height="20">NOW
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="#"
 							onclick="cloud()">MY BOX</a></li>
@@ -348,13 +350,13 @@ function cloudBox(data) { // { }
 			<!-- 동영상이미지,로그인,회원가입 -->
 			<c:if test="${empty uvo}">
 				<img onclick="login()" src="original/no_login.png" width="900"
-					height="600">
+					height="600" style="margin-left: 7%">
 
 				<div class="loginForm" style="display: none">
 					<form action="${cpath}/login.do" id="loginForm" method="post">
 						<div class="login">
-							<h2>Log-in</h2>
 							<div class="close" onclick="popClose()">X</div>
+							<h2>Log-in</h2>
 							<div class="login_sns">
 								<li><a href=""><i class="fab fa-instagram"></i></a></li>
 								<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
@@ -373,15 +375,17 @@ function cloudBox(data) { // { }
 								<input type="checkbox"> Remember Me?
 							</div>
 							<div class="submit">
-								<button type="button" onclick="join()">회원가입</button>
 								<input class="" type="submit" value="로그인">
+								<button type="button" onclick="join()">회원가입</button>
 							</div>
 						</div>
 
 					</form>
-					<div class="joinForm" style="display: none">
-						<form class="joinForm" action="${cpath}/join.do" method="post">
+					<div>
+						<form class="joinForm" action="${cpath}/join.do" method="post"
+							style="display: none">
 							<div class="close" onclick="popClose()">X</div>
+							<h1>Sign-up</h1>
 							<p>
 								아이디:<input type="text" name="id" id="id">
 
@@ -420,18 +424,18 @@ function cloudBox(data) { // { }
 		<!-- 로그인완료! -->
 		<div id="main">
 			<c:if test="${!empty uvo}">
-				<video id="now" width="900" height="600" autoplay="autoplay"
-					src="original/20220429092515936.mp4" type="video/mp4">
+				<video id="now" width="900" height="600" style="margin-left: 7%"
+					autoplay="autoplay" src="original/20220429092515936.mp4"
+					type="video/mp4">
 				</video>
 			</c:if>
 		</div>
 		<div id="mybox">
-			<div id="cloud" onclick="cloud()">
-		</div>
-		<c:if test="${!empty uvo}">
-		<video id="video" width="900" height="600" controls="controls">
-		</video>
-		</c:if>
+			<div id="cloud" onclick="cloud()"></div>
+			<c:if test="${!empty uvo}">
+				<video id="video" width="900" height="600" controls="controls">
+				</video>
+			</c:if>
 		</div>
 
 
@@ -444,40 +448,40 @@ function cloudBox(data) { // { }
 			</div>
 			<div id="content" style="display: none">
 				<form id="insert">
-				<table class='table table-bordered table-hover'>
-					<tr>
-						<td>위반사항</td>
-						<td id="ill"></td>
-					</tr>
-					<tr>
-						<td>위반시간</td>
-						<td id="time"></td>
-					</tr>
-					<tr>
-						<td>위반장소</td>
-						<td id="place"></td>
-					</tr>
-					<tr>
-						<td>위반번호</td>
-						<td id="plate"></td>
-					</tr>
-					<tr>
-						<td>제보자</td>
-						<td id="name">${uvo.name}</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>${uvo.rrn}</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>${uvo.address}</td>
-					</tr>
-					<tr>
-						<td></td>
-						<td>${uvo.phone}</td>
-					</tr>
-				</table>
+					<table class='table table-bordered table-hover'>
+						<tr>
+							<td>위반사항</td>
+							<td id="ill"></td>
+						</tr>
+						<tr>
+							<td>위반시간</td>
+							<td id="time"></td>
+						</tr>
+						<tr>
+							<td>위반장소</td>
+							<td id="place"></td>
+						</tr>
+						<tr>
+							<td>위반번호</td>
+							<td id="plate"></td>
+						</tr>
+						<tr>
+							<td>제보자</td>
+							<td id="name">${uvo.name}</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>${uvo.rrn}</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>${uvo.address}</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>${uvo.phone}</td>
+						</tr>
+					</table>
 				</form>
 				<button onclick="accuse()">등록</button>
 				<button onclick="boardList()">취소</button>
