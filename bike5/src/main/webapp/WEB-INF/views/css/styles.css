@@ -66,10 +66,10 @@
 
 
 <!-- 여기서부터 -->
-#popLogin{
+.loginForm{
     display: none;
 }
-#popLogin{
+.loginForm{
     width: 50%;
     height: 55%;
     position: absolute;

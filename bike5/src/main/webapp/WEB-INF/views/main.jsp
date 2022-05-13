@@ -71,6 +71,7 @@ function callBack(data){
 	 $("#manual").css("display", "none");
 }
 	function accbtn() {
+		$("#accuse").css("display", "block");
 		$("#file").css("display", "block");
 		$("#content").css("display", "block");
 		$("#list").css("display", "none");
@@ -163,8 +164,10 @@ function cloudBox(data) { // { }
 		
 	}
 	function login() {
-	        $("#popLogin").show();
-	        $(".loginform").css("display", "block"); 
+			$(".joinForm").css("display", "none");
+	        $(".login").css("display", "block"); 
+	        $(".loginForm").css("display", "block"); 
+	        $("#loginForm").css("display", "block"); 
 	        $("body").append('<div class="backcon"></div>'); 
 	}
 	
@@ -180,13 +183,13 @@ function cloudBox(data) { // { }
 	}
 	
 	function popClose(){
-        $("#popLogin").hide();
+        $(".loginForm").css("display", "none")
+        $("#loginForm").css("display", "none")
   	    $(".backcon").remove();
 	}
 	function join() {
 		$(".login").css("display", "none");
-		$(".join").css("display", "block");
-		$(".joinform").css("display", "block");
+		$(".joinForm").css("display", "block");
 	}
 
 	function main() {
@@ -299,10 +302,9 @@ function cloudBox(data) { // { }
 				<img onclick="login()" src="original/no_login.png" width="900"
 					height="600">
 
-
-				<div class="loginform" id="popLogin" style="display:none">
-					<form action="${cpath}/login.do" method="post">
-						<div class="login" >
+				<div class="loginForm" style="display: none">
+					<form action="${cpath}/login.do" id="loginForm" method="post">
+						<div class="login">
 							<h2>Log-in</h2>
 							<div class="close" onclick="popClose()">X</div>
 							<div class="login_sns">
@@ -329,8 +331,9 @@ function cloudBox(data) { // { }
 						</div>
 
 					</form>
-					<div class="join" style="display: none">
-						<form class="joinform" action="${cpath}/join.do" method="post">
+					<div class="joinForm" style="display: none">
+						<form class="joinForm" action="${cpath}/join.do" method="post">
+							<div class="close" onclick="popClose()">X</div>
 							<p>
 								아이디:<input type="text" name="id">
 								<button id="result" type="button" onclick="idCheck()">중복
@@ -424,7 +427,7 @@ function cloudBox(data) { // { }
 		</div>
 
 		<div id="manual" style="display: none">
-			<table class="table table_test_class">
+			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
 						<th colspan="2">위반사항</th>
