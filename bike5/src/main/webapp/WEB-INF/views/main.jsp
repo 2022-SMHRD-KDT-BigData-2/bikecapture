@@ -71,6 +71,7 @@ function callBack(data){
 	 bList+="</table>";
 	 
 	 $("#list").html(bList);
+	 $("#video").css("display", "none");
 	 $("#accuse").css("display", "block");
 	 $("#file").css("display", "none");
 	 $("#list").css("display", "block");
