@@ -22,11 +22,17 @@
 
 	<select id="boardList" resultType="kr.bike.entity.Board">
 		select * from board
-		order by bo_num desc
+		order by
+		bo_num desc
 	</select>
 
 	<select id="cloudList" resultType="kr.bike.entity.Original">
 		select * from video_original
 		order by vo_title
+	</select>
+
+	<select id="idCheck" resultType="kr.bike.entity.User">
+		select * from user_info
+		where id=#{id}
 	</select>
 </mapper>

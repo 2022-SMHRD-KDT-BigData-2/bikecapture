@@ -18,4 +18,6 @@ public interface BikeMapper {
 	public List<Board> boardList();
 
 	public List<Original> cloudList();
+
+	public User idCheck(String id);
 }

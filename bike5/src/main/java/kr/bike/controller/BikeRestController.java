@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import kr.bike.entity.Analysis;
 import kr.bike.entity.Board;
 import kr.bike.entity.Original;
+import kr.bike.entity.User;
 import kr.bike.mapper.BikeMapper;
 
 @RestController
@@ -26,26 +27,32 @@ public class BikeRestController {
 
 	@PostMapping("/fileload")
 	public @ResponseBody Analysis fileLoad(String vr_title, HttpServletRequest request) {
-		vr_title=vr_title.substring(vr_title.lastIndexOf("\\")+1);
+		vr_title = vr_title.substring(vr_title.lastIndexOf("\\") + 1);
 		Analysis avo = bikemapper.fileLoad(vr_title);
 		System.out.println(vr_title);
 		return avo;
-		
+
 	}
-	
+
 	@GetMapping("/boardList")
 	public @ResponseBody List<Board> boardList() {
-		
+
 		List<Board> list = bikemapper.boardList();
-		
-		return list;		
+
+		return list;
 	}
-	
+
 	@GetMapping("/cloud")
-	public @ResponseBody List<Original> cloudList(){
+	public @ResponseBody List<Original> cloudList() {
 		List<Original> clist = bikemapper.cloudList();
 		return clist;
-		
+
 	}
-	
+
+	@PostMapping("/idCheck")
+	public User idCheck(String id, HttpServletRequest request) {
+		User uid = bikemapper.idCheck(id);
+		return uid;
+	}
+
 }

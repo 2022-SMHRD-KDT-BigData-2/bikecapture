@@ -23,6 +23,10 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script type="text/javascript"></script>
 <script>
+function popUp(){
+	alert("로그인을 해주세요");
+}
+
 function boardList() {
 	 $.ajax({
    	url : "${cpath}/boardList",
@@ -78,16 +82,16 @@ function callBack(data){
 	}
 	function idCheck() {
 		// 1. id 가져오기
-		let id = $('#check').val()
+		let id = $('#id').val();
 		// 2. ajax
 		$.ajax({
-			url : "${cpath}",
+			url : "${cpath}/idCheck",
 			type : "post",
 			data : {
 				'id' : id
 			},
 			success : function(res) {
-				if (res == "true") {
+				if (res.id != id) {
 					//사용가능한 아이디
 					$("#result").html("사용가능한 아이디입니다.");
 					$('#result').css("color", "blue");
@@ -96,6 +100,8 @@ function callBack(data){
 					$("#result").html("중복된 아이디입니다.");
 					$("#result").css("color", "red");
 				}
+				console.log(id);
+			
 			},
 			error : function() {
 				alert("error");
@@ -103,7 +109,6 @@ function callBack(data){
 		})
 	}
 function cloud() {
-
 		 $.ajax({
 	   	url : "${cpath}/cloud",
 	   	type : "get",
@@ -242,23 +247,35 @@ function cloudBox(data) { // { }
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
 					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="main()"> <img src="css/images//d.png" width="20"
+						onclick="popUp()"> <img src="css/images//d.png" width="20"
 							height="20">NOW
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="cloud()">MY BOX</a></li>
+						onclick="popUp()">MY BOX</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="boardList()">ACCUSE</a></li>
+						onclick="popUp()">ACCUSE</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"
-						onclick="manual()">MANUAL</a></li>
+						onclick="popUp()">MANUAL</a></li>
 					<c:if test="${empty uvo}">
 						<li class="nav-item"><a class="nav-link" href="#" id="login"
 							onclick="login()">LOG-IN</a></li>
 					</c:if>
 					<c:if test="${!empty uvo}">
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="main()"> <img src="css/images//d.png" width="20"
+								height="20">NOW
+						</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="cloud()">MY BOX</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="boardList()">ACCUSE</a></li>
+						<li class="nav-item"><a class="nav-link" href="#"
+							onclick="manual()">MANUAL</a></li>
 						<li class="nav-item"><a class="nav-link" href="main.do"
 							id="logout" onclick="logout()">LOG-OUT</a></li>
 					</c:if>
@@ -335,12 +352,13 @@ function cloudBox(data) { // { }
 						<form class="joinForm" action="${cpath}/join.do" method="post">
 							<div class="close" onclick="popClose()">X</div>
 							<p>
-								아이디:<input type="text" name="id">
-								<button id="result" type="button" onclick="idCheck()">중복
-									확인</button>
+								아이디:<input type="text" name="id" id="id">
+
+								<button type="button" onclick="idCheck()">중복 확인</button>
+								<span id="result"></span>
 							</p>
 							<p>
-								비밀번호:<input type="password" name="pw">
+								비밀번호:<input type="password" name="pw" id="pw">
 							</p>
 							<p>
 								블랙박스번호:<input type="text" name="bb_num">
