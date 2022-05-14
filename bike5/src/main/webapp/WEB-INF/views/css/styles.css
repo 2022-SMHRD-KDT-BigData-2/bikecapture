@@ -104,6 +104,17 @@
     margin-right: 2%;
 }
 
+.p{
+	font-size:18px;
+	color:white;
+}
+
+p{
+	margin-left:25%;
+	font-size:14px;
+	color:white;
+}
+
 <!-- 여기까지 꼭 넣어주기!! --> 
 
 
@@ -116,9 +127,9 @@
 footer {
     width: 100%;
     height: 5%; /* footer의 높이 */
-    position: absolute;  
     bottom: 0;
     left: 0;
+    position : fixed;
 }
 * {
   margin: 0;
@@ -405,11 +416,6 @@ h5, .h5 {
 
 h6, .h6 {
   font-size: 1rem;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 abbr[title],
