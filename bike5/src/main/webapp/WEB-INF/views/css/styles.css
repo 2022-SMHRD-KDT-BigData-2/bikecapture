@@ -326,11 +326,21 @@ h2 {
 #cloud{
     margin: 1%;
     text-align: inherit;
-    font-size: large;
-    mix-blend-mode: color-burn;
+    
+    mix-blend-mode: color-w;
+    
+}
+
+#cloud a{
+	color: rgba(255, 255, 255, 0.7);
+	font-size: large;
 }
 
 
+#cloud th{
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 20px;
+}
     
 
 

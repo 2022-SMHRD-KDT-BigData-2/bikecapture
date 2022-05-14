@@ -126,7 +126,7 @@ function cloud() {
 function cloudBox(data) { // { }
 	 var cList = "<table class='table table-bordered table-hover'>";
 	 cList+="<tr>";
-	 cList+="<td>파일명</td>";
+	 cList+="<th>파일명</th>";
 	 cList+="</tr>";
 	 // data에 저장된 JSON데이터를 핸들링 -> 반복문
 	 // [{"idx":1},{"title":"게시판",,,,},{   }]
