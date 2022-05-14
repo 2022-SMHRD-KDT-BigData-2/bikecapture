@@ -98,12 +98,10 @@ function callBack(data){
 			success : function(res) {
 				if (res.id != id) {
 					//사용가능한 아이디
-					$("#result").html("사용가능한 아이디입니다.");
-					$('#result').css("color", "blue");
+					alert("사용가능한 아이디입니다.");
 				} else {
 					//중복된 아이디
-					$("#result").html("중복된 아이디입니다.");
-					$("#result").css("color", "red");
+					alert("중복된 아이디입니다.");
 				}
 				console.log(id);
 			
@@ -357,11 +355,6 @@ function cloudBox(data) { // { }
 						<div class="login">
 							<div class="close" onclick="popClose()">X</div>
 							<h2>Log-in</h2>
-							<div class="login_sns">
-								<li><a href=""><i class="fab fa-instagram"></i></a></li>
-								<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href=""><i class="fab fa-twitter"></i></a></li>
-							</div>
 							<div class="login_id">
 								<h4>ID</h4>
 								<input type="text" name="id" placeholder="id를 입력해주세요">
@@ -373,6 +366,11 @@ function cloudBox(data) { // { }
 
 							<div class="checkbox">
 								<input type="checkbox"> Remember Me?
+							</div>
+							<div class="login_sns">
+								<li><a href=""><i class="fab fa-instagram"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
 							</div>
 							<div class="submit">
 								<input class="" type="submit" value="로그인">
@@ -386,14 +384,11 @@ function cloudBox(data) { // { }
 							style="display: none">
 							<div class="close" onclick="popClose()">X</div>
 							<div class="sign-up">
-								<h2>Sign-up</h2>
-
+								<h2> Sign-up</h2>
 								<h4 class="col-md-3">아이디 :</h4>
 								<input class="col-md-8" type="text" name="id" id="id">
-								<button type="button" style="margin: 2%" onclick="idCheck()">중복
-									확인</button>
-								<span class="col-md-11" id="result"></span>
-
+								<button class="col-md-1" type="button" style="margin: 0%; left: 6%;
+    top: 14px;" onclick="idCheck()">중복 확인</button>
 								<h4 class="col-md-3">비밀번호 :</h4>
 								<input class="col-md-8" type="password" name="pw" id="pw">
 								<h4 class="col-md-3">비밀번호 확인:</h4>
@@ -538,13 +533,15 @@ function cloudBox(data) { // { }
 					</p>
 					<p>1년 이하의 징역 또는 500만원의 벌금</p>
 				</div>
-
+				<div class="eee" >
+					<p></p>
+				</div>
 			</div>
 		</div>
 	</div>
 
 
-	</div>
+	
 
 
 
