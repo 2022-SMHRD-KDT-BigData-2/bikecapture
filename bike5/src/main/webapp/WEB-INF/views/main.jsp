@@ -72,17 +72,19 @@ function callBack(data){
 	 $("#video").css("display", "none");
 	 $("#list").html(bList);
 	 $("#accuse").css("display", "block");
-	 $("#file").css("display", "none");
 	 $("#list").css("display", "block");
+	 $("#file").css("display", "none");
 	 $("#main").css("display", "none");
 	 $("#now").css("display", "none");
 	 $("#manual").css("display", "none");
+	 $("#mybox").css("display", "none");
+	 $("#cloud").css("display", "none");
 }
 	function accbtn() {
-		$("#video").css("display", "none");
 		$("#accuse").css("display", "block");
-		$("#file").css("display", "block");
 		$("#content").css("display", "block");
+		$("#file").css("display", "block");
+		$("#video").css("display", "none");
 		$("#list").css("display", "none");
 	}
 	function idCheck() {
@@ -143,6 +145,7 @@ function cloudBox(data) { // { }
 	 $("#now").css("display", "none");
 	 $("#manual").css("display", "none");
 	 $("#video").css("display", "block");
+	 $("#mybox").css("display", "block");
 
 	}
 	
@@ -431,7 +434,7 @@ function cloudBox(data) { // { }
 				</c:if>
 			</div>
 			<div id="mybox">
-				<div class="col-md-8" id="cloud" onclick="cloud()"></div>
+				<div class="col-md-3" id="cloud" onclick="cloud()"></div>
 				<c:if test="${!empty uvo}">
 					<video id="video" width="900" height="600" controls="controls">
 					</video>
@@ -439,7 +442,7 @@ function cloudBox(data) { // { }
 			</div>
 
 
-			<div class="col-md-4" id="accuse" style="">
+			<div class="col-md-8" id="accuse" style="">
 				<div id="list"></div>
 				<div id="file" style="display: none">
 					<input type="file" name="vr_title" id="vr_title">
