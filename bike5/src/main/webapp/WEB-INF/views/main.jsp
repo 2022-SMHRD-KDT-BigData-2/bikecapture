@@ -69,6 +69,7 @@ function callBack(data){
 	 bList+="</td>";
 	 bList+="</tr>";
 	 bList+="</table>";
+	 $("#mybox").css("display", "none");
 	 $("#content").css("display", "none");
 	 $("#video").css("display", "none");
 	 $("#list").html(bList);
