@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>순간포착</title>
+<title>Spring Test</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -393,7 +393,7 @@ function cloudBox(data) { // { }
 								<h4 class="col-md-3">아이디 :</h4>
 								<input class="col-md-8" type="text" name="id" id="id">
 								<button class="col-md-1" type="button"
-									style="margin: 0%; left: 6%; top: 14px;" onclick="idCheck()">중복
+									style="margin:0%; left:3.5%; top:14px; width:110px" onclick="idCheck()">중복
 									확인</button>
 								<h4 class="col-md-3">비밀번호 :</h4>
 								<input class="col-md-8" type="password" name="pw" id="pw">
@@ -431,7 +431,7 @@ function cloudBox(data) { // { }
 			<div id="main">
 				<c:if test="${!empty uvo}">
 					<video id="now" width="900" height="600" style="margin-left: 7%"
-						autoplay="autoplay" src="original/202204291828(1280).mp4" muted
+						autoplay="autoplay" src="original/202204291913.mp4" muted
 						type="video/mp4">
 					</video>
 				</c:if>
