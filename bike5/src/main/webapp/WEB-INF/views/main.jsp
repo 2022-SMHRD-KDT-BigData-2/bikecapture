@@ -84,7 +84,7 @@ function callBack(data){
 		$("#video").css("display", "none");
 		$("#accuse").css("display", "block");
 		$("#file").css("display", "block");
-		$("#content").css("display", "block");
+		$("#content").css("display", "none");
 		$("#list").css("display", "none");
 	}
 	function idCheck() {
@@ -132,7 +132,7 @@ function cloudBox(data) { // { }
 	 // [{"idx":1},{"title":"게시판",,,,},{   }]
 	 $.each(data,(index,obj)=>{
 		 cList+="<tr>";
-		 cList+="<td><a onclick='video_play("+obj.vo_title+")'>"+obj.vo_title+"</td></a>";
+		 cList+="<td><a href='#' style='text-decoration:none' onclick='video_play("+obj.vo_title+")'>"+obj.vo_title+"</td></a>";
 	  	 cList+="</tr>";
 		 });
 		 cList+="</table>";
@@ -429,7 +429,7 @@ function cloudBox(data) { // { }
 			<div id="main">
 				<c:if test="${!empty uvo}">
 					<video id="now" width="900" height="600" style="margin-left: 7%"
-						autoplay="autoplay" src="original/20220429092515936.mp4"
+						autoplay="autoplay" src="original/202204291913.mp4" muted
 						type="video/mp4">
 					</video>
 				</c:if>
@@ -443,33 +443,30 @@ function cloudBox(data) { // { }
 			</div>
 
 
-			<div id="accuse">
+			<div id="accuse" style="display: none">
 				<div id="list"></div>
-				
+
 				<!-- 제보하기 파일 올리기 부분 -->
 
 
-				<div class="popup-wrap1" id="popup1">
-					<div id="file">
+				<div id="file">
 
-						<!--  실질적 파일 몸통 -->
-						<div class="file-head">
-							<span class="head-title">제보하기</span>
-						</div>
-						<div class="file-body">
-							<div class="file-content">
-								<input type="file" name="vr_title" id="vr_title">
-							</div>
-						</div>
-
-						<div class="file-foot">
-							<button onclick="fileclear()">CANCEL</button>
-							<button class="file-submit" onclick="fileLoad()">SUBMIT</button>
+					<!--  실질적 파일 몸통 -->
+					<div class="file-head">
+						<span class="head-title">제보하기</span>
+					</div>
+					<div class="file-body">
+						<div class="file-content">
+							<input type="file" name="vr_title" id="vr_title">
+							<button onclick="fileclear()">CLEAR</button>
 						</div>
 					</div>
+
+					<div class="file-foot">
+						<button onclick="boardList()">CANCEL</button>
+						<button class="file-submit" onclick="fileLoad()">SUBMIT</button>
+					</div>
 				</div>
-
-
 
 				<div id="content" style="display: none">
 					<form id="insert">
@@ -545,16 +542,16 @@ function cloudBox(data) { // { }
 						하려는 경우에는 시장·군수·구청장의 승인을 받아야한다<br> 1년 이하의 징역 300만원 이하의 벌금
 					</p>
 				</div>
-				<div class="m" style="float: right; margin-bottom:30px;">
+				<div class="m" style="float: right; margin-bottom: 30px;">
 					<img src="https://s1.dmcdn.net/v/TEPL81XCIr-1hH-Lx/x360"
 						style="float: right; display: flex; justify-content: center; margin-right: 2%; width: 170px; height: 170px;">
 					<p class="p-title2">4. 난폭운전</p>
 					<p class="p-content2">
 						도로교통법 제 46조 3 (난폭운전 금지)<br> 자동차의 운전자는 다음 각 호 중 둘 이상의 행위를 연달아
-						하거나, 하나의 행위를 지속 또는 반복하여 다른 사람에게 위협 또는 위해를 가하거나 교통상의 위험을
-						발생하게 하여서는 아니된다. 신호 또는 지시위반, 중앙선 침범, 속도의 위반, 횡단,유턴,후진금지위반
-						안전거리 미확보, 진로변경 금지 위반 급제동 금지위반 정당한 사유 없는 소음발생 고속도로에서의 앞지르기
-						방법 위반 1년 이하의 징역 또는 500만원의 벌금
+						하거나, 하나의 행위를 지속 또는 반복하여 다른 사람에게 위협 또는 위해를 가하거나 교통상의 위험을 발생하게 하여서는
+						아니된다. 신호 또는 지시위반, 중앙선 침범, 속도의 위반, 횡단,유턴,후진금지위반 안전거리 미확보, 진로변경 금지
+						위반 급제동 금지위반 정당한 사유 없는 소음발생 고속도로에서의 앞지르기 방법 위반 1년 이하의 징역 또는 500만원의
+						벌금
 					</p>
 				</div>
 			</div>
