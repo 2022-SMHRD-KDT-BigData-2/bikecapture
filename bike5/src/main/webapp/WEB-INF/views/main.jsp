@@ -180,6 +180,7 @@ function cloudBox(data) { // { }
 		$("#place").html(data.vr_long+" "+data.vr_lati)
 		$("#plate").html(data.vr_plate)
 		$("#content").css("display","block")
+		$("#popup1").css("display","none")
 		
 	}
 	function fileclear() {
