@@ -471,43 +471,47 @@ function cloudBox(data) { // { }
 
 				<div id="content" style="display: none">
 					<form id="insert">
-						<table class='table table-bordered table-hover'>
+						<table class="table1">
 							<tr>
-								<td>위반사항</td>
+								<th>위반사항</th>
 								<td id="ill"></td>
 							</tr>
 							<tr>
-								<td>위반시간</td>
+								<th>위반시간</th>
 								<td id="time"></td>
 							</tr>
 							<tr>
-								<td>위반장소</td>
+								<th>위반장소</th>
 								<td id="place"></td>
 							</tr>
 							<tr>
-								<td>위반번호</td>
+								<th>위반번호</th>
 								<td id="plate"></td>
 							</tr>
 							<tr>
-								<td>제보자</td>
+								<th rowspan="4">제보자 인적사항</th>
 								<td id="name">${uvo.name}</td>
 							</tr>
 							<tr>
-								<td></td>
+
 								<td>${uvo.rrn}</td>
 							</tr>
 							<tr>
-								<td></td>
+
 								<td>${uvo.address}</td>
 							</tr>
 							<tr>
-								<td></td>
+
 								<td>${uvo.phone}</td>
 							</tr>
 						</table>
+						<div style="text-align: center">
+							<button class="content-btn3" style="margin: 2.5%"
+								onclick="accuse()">등록</button>
+							<button class="content-btn2" style="margin: 2.5%"
+								onclick="boardList()">취소</button>
+						</div>
 					</form>
-					<button onclick="accuse()">등록</button>
-					<button onclick="boardList()">취소</button>
 				</div>
 			</div>
 
