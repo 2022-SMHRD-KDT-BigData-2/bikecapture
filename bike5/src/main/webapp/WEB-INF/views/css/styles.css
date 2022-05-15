@@ -384,11 +384,6 @@ h2 {
     margin: auto;
 }
 
-#list table{
-
-	
-}
-
 
 #list th{
 	color: rgba(255, 255, 255, 0.7);
@@ -419,6 +414,73 @@ width: 15%;
     font-weight: 600;
     color: whitesmoke;
 }
+
+<!-- 제보하기 파일올리기 -->
+.popup-wrap1{
+  background-color:red;
+  justify-content:center; 
+  align-items:center;     
+  position:fixed;                     
+  padding:15px; 
+  width:100%;  
+  height:80%; 
+}
+
+#file{
+  width:100%;               
+  max-width:400px;          
+  border-radius:10px;      
+  overflow:hidden;          
+  background-color:#3a3f44;
+  box-shadow: 5px 10px 10px 1px rgba(0,0,0,.3); 
+}
+
+.file-head{
+  width:100%;
+  height:50px; 
+  display:flex; 
+  align-items:center;
+  justify-content:center;
+  color: aliceblue;
+  font-size: xx-large;
+}
+
+.file-body{                
+  width:100%;
+  background-color:#bfc0c1bd;
+}
+.file-content{             
+  width:100%; 
+   min-height:100px;   
+   max-height:200px;  
+  display:flex; 
+  align-items:center;
+  justify-content:center;
+  font-size: large;
+}
+
+.file-foot{                      
+  width:100%;
+  height:50px;
+  font-size: large;
+}
+#file button{ 
+  display:inline-flex;            
+  width:50%;                      
+  height:100%;                    
+  justify-content:center;         
+  align-items:center;             
+  float:left;                            
+  color:#675151;                
+  cursor:pointer;    
+  margin: 0;             
+}
+.file-submit{                 
+  border-right
+}
+
+
+
 
 
 

@@ -445,11 +445,32 @@ function cloudBox(data) { // { }
 
 			<div id="accuse">
 				<div id="list"></div>
-				<div id="file" style="display: none">
-					<input type="file" name="vr_title" id="vr_title">
-					<button onclick="fileclear()">CANCEL</button>
-					<button onclick="fileLoad()">SUBMIT</button>
+				
+				<!-- 제보하기 파일 올리기 부분 -->
+
+
+				<div class="popup-wrap1" id="popup1">
+					<div id="file">
+
+						<!--  실질적 파일 몸통 -->
+						<div class="file-head">
+							<span class="head-title">제보하기</span>
+						</div>
+						<div class="file-body">
+							<div class="file-content">
+								<input type="file" name="vr_title" id="vr_title">
+							</div>
+						</div>
+
+						<div class="file-foot">
+							<button onclick="fileclear()">CANCEL</button>
+							<button class="file-submit" onclick="fileLoad()">SUBMIT</button>
+						</div>
+					</div>
 				</div>
+
+
+
 				<div id="content" style="display: none">
 					<form id="insert">
 						<table class='table table-bordered table-hover'>
