@@ -573,7 +573,7 @@ function cloudBox(data) { // { }
 	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="col-md-8">
-			<div class="small text-center text-muted">Copyright &copy; 2022
+			<div class="small text-center text-muted" style="margin-top: auto">Copyright &copy; 2022
 				- 빅데이터 분석서비스 개발자과정</div>
 		</div>
 		<div class="col-md-4" style="margin-top: -0.7%">
