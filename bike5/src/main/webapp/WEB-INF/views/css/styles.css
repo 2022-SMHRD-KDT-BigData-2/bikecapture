@@ -113,26 +113,14 @@
 	margin-right: 2%;
 }
 
-.p-title1 {
+.p-title {
 	margin-left: 18%;
 	font-size: 18px;
 	color: white;
 }
 
-.p-content1 {
+.p-content {
 	margin-left: 18%;
-	font-size: 14px;
-	color: white;
-}
-
-.p-title2 {
-	margin-left: 38%;
-	font-size: 18px;
-	color: white;
-}
-
-.p-content2 {
-	margin-left: 38%;
 	font-size: 14px;
 	color: white;
 }
