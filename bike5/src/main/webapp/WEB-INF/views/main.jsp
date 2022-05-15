@@ -458,7 +458,7 @@ function cloudBox(data) { // { }
 						<div class="file-body">
 							<div class="file-content">
 								<input type="file" name="vr_title" id="vr_title">
-								<button onclick="fileclear()">CLEAR</button>
+								<a href="#" onclick="fileclear()">X</a>
 							</div>
 						</div>
 
