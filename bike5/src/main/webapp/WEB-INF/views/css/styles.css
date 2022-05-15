@@ -114,31 +114,31 @@
 }
 
 .p-title1 {
-	margin-left: 20%;
+	margin-left: 18%;
 	font-size: 18px;
 	color: white;
 }
 
 .p-content1 {
-	margin-left: 20%;
+	margin-left: 18%;
 	font-size: 14px;
 	color: white;
 }
 
 .p-title2 {
-	margin-left: 40%;
+	margin-left: 38%;
 	font-size: 18px;
 	color: white;
 }
 
 .p-content2 {
-	margin-left: 40%;
+	margin-left: 38%;
 	font-size: 14px;
 	color: white;
 }
 
 .m{
-	height:160px;
+	height:170px;
 	width:100%
 }
 
@@ -486,7 +486,7 @@ width: 15%;
     border: 0;
     outline: none;
     border-radius: 40px;
-    background: linear-gradient(to left, #acf1ff, #337ab7);
+    background: linear-gradientrgb(255, 77, 46), rgb(255 206 154));
     color: white;
     font-size: 2.5em;
     letter-spacing: 2px;	
@@ -11436,7 +11436,7 @@ hr.divider-light {
 	}
 	#mainNav .navbar-nav .nav-item .nav-link {
 		color: rgba(255, 255, 255, 0.7);
-		padding: 0 1rem;
+		padding: 0 1.5rem;
 		padding-top: 4rem;
 	}
 	#mainNav .navbar-nav .nav-item .nav-link:hover {
