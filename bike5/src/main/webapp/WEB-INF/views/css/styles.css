@@ -372,6 +372,56 @@ h2 {
 	font-size: 20px;
 }
 
+<!-- 어큐즈 -->
+.accuse-from{
+
+}
+
+#list{
+	display: block;
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+#list table{
+
+	
+}
+
+
+#list th{
+	color: rgba(255, 255, 255, 0.7);
+	font-size: 20px;
+}
+
+#list td{
+	color: rgba(255, 255, 255, 0.7);
+	font-size: large;
+}
+
+#list a{
+	color: rgba(255, 255, 255, 0.7);
+	font-size: large;
+}
+
+#list button {
+width: 15%;
+    height: 35px;
+    border-radius: 30px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    float: right;
+    margin: 2.5%;
+    margin-block-start: auto;
+    font-size: x-large;
+    background-color: slategrey;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+
+
 <!--
 여기까지  -->*, *::before, *::after {
 	box-sizing: border-box;

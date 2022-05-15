@@ -39,10 +39,10 @@ function boardList() {
 function callBack(data){
 	 var bList = "<table class='table table-bordered table-hover'>";
 	 bList+="<tr>";
-	 bList+="<td>번호</td>";
-	 bList+="<td>위반사항</td>";
-	 bList+="<td>작성일</td>";
-	 bList+="<td>작성자</td>";
+	 bList+="<th>번호</th>";
+	 bList+="<th>위반사항</th>";
+	 bList+="<th>작성일</th>";
+	 bList+="<th>작성자</th>";
 	 bList+="</tr>";
 	 // data에 저장된 JSON데이터를 핸들링 -> 반복문
 	 // [{"idx":1},{"title":"게시판",,,,},{   }]
@@ -62,11 +62,11 @@ function callBack(data){
 	 });
 	 
 	 bList+="<tr>";
-	 bList+="<td colspan='4'>";
-
-	 bList+="<button class='btn btn-sm btn-info' onclick='accbtn()'>제보</button>";
 	 
-	 bList+="</td>";
+
+	 bList+="<button class='btn btn-sm btn-info' onclick='accbtn()'>제 보</button>";
+	 
+	 
 	 bList+="</tr>";
 	 bList+="</table>";
 	 $("#mybox").css("display", "none");
@@ -443,7 +443,7 @@ function cloudBox(data) { // { }
 			</div>
 
 
-			<div class="col-md-8" id="accuse" style="">
+			<div id="accuse">
 				<div id="list"></div>
 				<div id="file" style="display: none">
 					<input type="file" name="vr_title" id="vr_title">
