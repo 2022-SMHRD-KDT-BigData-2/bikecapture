@@ -151,7 +151,7 @@ function cloudBox(data) { // { }
 	
 	function video_play(vo_title) {		
 		$("#video").css("display","block")
-		$("#video").html('<source src="original/'+vo_title+'.mp4" type="video/mp4"></source>' );
+		$("#video").html('<source src="original/'+vo_title+'.mp4" type="video/mp4" muted></source>' );
 		var video = document.getElementById('video');
 		video.load();
 	}
