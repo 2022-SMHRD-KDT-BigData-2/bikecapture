@@ -373,9 +373,9 @@ function cloudBox(data) { // { }
 								<input type="checkbox"> Remember Me?
 							</div>
 							<div class="login_sns">
-								<li><a href=""><i class="fab fa-instagram"></i></a></li>
-								<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a></li>
+								<li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li>
 							</div>
 							<div class="submit">
 								<input class="" type="submit" value="로그인">
