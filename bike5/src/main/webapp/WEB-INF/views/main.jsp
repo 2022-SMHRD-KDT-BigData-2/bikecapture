@@ -431,7 +431,7 @@ function cloudBox(data) { // { }
 			<div id="main">
 				<c:if test="${!empty uvo}">
 					<video id="now" width="900" height="600" style="margin-left: 7%"
-						autoplay="autoplay" src="original/202204291913.mp4" muted
+						autoplay="autoplay" src="original/202204291828(1280).mp4" muted
 						type="video/mp4">
 					</video>
 				</c:if>
