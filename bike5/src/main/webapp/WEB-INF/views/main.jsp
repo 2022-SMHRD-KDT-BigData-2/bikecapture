@@ -151,7 +151,7 @@ function cloudBox(data) { // { }
 	
 	function video_play(vo_title) {		
 		$("#video").css("display","block")
-		$("#video").html('<source src="original/'+vo_title+'.mp4" type="video/mp4" muted></source>' );
+		$("#video").html('<source src="original/'+vo_title+'.mp4" type="video/mp4" muted>' );
 		var video = document.getElementById('video');
 		video.load();
 	}
@@ -430,10 +430,7 @@ function cloudBox(data) { // { }
 			<!-- 로그인완료! -->
 			<div id="main">
 				<c:if test="${!empty uvo}">
-					<video id="now" width="900" height="600" style="margin-left: 7%"
-						autoplay="autoplay" src="original/202204291828(1280).mp4" muted
-						type="video/mp4">
-					</video>
+					<div>${loadNow}</div>
 				</c:if>
 			</div>
 			<div id="mybox">
