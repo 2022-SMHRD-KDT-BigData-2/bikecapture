@@ -439,7 +439,7 @@ function cloudBox(data) { // { }
 			<div id="mybox">
 				<div class="col-md-3" id="cloud" onclick="cloud()"></div>
 				<c:if test="${!empty uvo}">
-					<video id="video" width="900" height="600" controls="controls">
+					<video id="video" width="900" height="600" controls="controls" muted>
 					</video>
 				</c:if>
 			</div>
